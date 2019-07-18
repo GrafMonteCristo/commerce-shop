@@ -3,46 +3,71 @@ package shop.api.entity;
 import shop.api.entity.annot.FieldName;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 public class Product implements Serializable {
-
-    /**Идентификатор товара*/
-    @FieldName(name="id")
+    /**
+     * Идентификатор товара
+     */
+    @FieldName(name = "id")
     private Long id;
-    /**Артикул*/
-    @FieldName(name="sku")
-    private String sku;
-    /**Наименование*/
-    @FieldName(name="name")
+    /**
+     * Наименование
+     */
+    @FieldName(name = "name")
     private String name;
-    /**Описание*/
-    @FieldName(name="description")
+    /**
+     * Описание
+     */
+    @FieldName(name = "description")
     private String description;
-    /**Цена*/
-    @FieldName(name="price")
-    private Float price;
-    /**Состав*/
-    @FieldName(name="composition")
+    /**
+     * Состав
+     */
+    @FieldName(name = "composition")
     private String composition;
-    /**Внешний идентификатор товара*/
-    @FieldName(name="external_id")
+    /**
+     * Внешний идентификатор товара
+     */
+    @FieldName(name = "external_id")
     private Integer externalId;
-    /**Материал*/
-    @FieldName(name="material")
+    /**
+     * Материал
+     */
+    @FieldName(name = "material")
     private String material;
-    /**Внешний идентификатор товара*/
-    @FieldName(name="quantity")
-    private Float quantity;
-    /**Внешний идентификатор товара*/
-    @FieldName(name="size")
-    private Float size;
-    /**Материал*/
-    @FieldName(name="color")
+    /**
+     * Идентификатор доп. свойств
+     */
+    @FieldName(name = "product_info_id")
+    private Long productInfoId;
+    /**
+     * Артикул
+     */
+    @FieldName(name = "sku")
+    private String sku;
+    /**
+     * Цвет
+     */
+    @FieldName(name = "color")
     private String color;
-    /**Поставщик*/
+    /**
+     * Цена
+     */
+    @FieldName(name = "price")
+    private Float price;
+    /**
+     * Количество размеров
+     */
+    private Collection<ProductQuantity> productQuantity;
+    /**
+     * Поставщик
+     */
     private Supplier supplier;
-    /**Категория товара*/
-    private Category category;
+    /**
+     * Категории товара
+     */
+    private Collection<Category> categories;
 
     public Long getId() {
         return id;
@@ -50,14 +75,6 @@ public class Product implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
     }
 
     public String getName() {
@@ -74,14 +91,6 @@ public class Product implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
     }
 
     public String getComposition() {
@@ -108,20 +117,20 @@ public class Product implements Serializable {
         this.material = material;
     }
 
-    public Float getQuantity() {
-        return quantity;
+    public Long getProductInfoId() {
+        return productInfoId;
     }
 
-    public void setQuantity(Float quantity) {
-        this.quantity = quantity;
+    public void setProductInfoId(Long productInfoId) {
+        this.productInfoId = productInfoId;
     }
 
-    public Float getSize() {
-        return size;
+    public String getSku() {
+        return sku;
     }
 
-    public void setSize(Float size) {
-        this.size = size;
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getColor() {
@@ -132,6 +141,22 @@ public class Product implements Serializable {
         this.color = color;
     }
 
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+    public Collection<ProductQuantity> getProductQuantity() {
+        return productQuantity;
+    }
+
+    public void setProductQuantity(Collection<ProductQuantity> productQuantity) {
+        this.productQuantity = productQuantity;
+    }
+
     public Supplier getSupplier() {
         return supplier;
     }
@@ -140,11 +165,11 @@ public class Product implements Serializable {
         this.supplier = supplier;
     }
 
-    public Category getCategory() {
-        return category;
+    public Collection<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(Collection<Category> categories) {
+        this.categories = categories;
     }
 }

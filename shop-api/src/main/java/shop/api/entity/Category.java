@@ -3,25 +3,47 @@ package shop.api.entity;
 import shop.api.entity.annot.FieldName;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 
 /**
  * Категория
+ *
  * @author user
  */
 public class Category implements Serializable {
-
-    /**Идентификатор категории*/
-    @FieldName(name="id")
+    /**
+     * Идентификатор категории
+     */
+    @FieldName(name = "id")
     private Long id;
-    /**Описание категории*/
-    @FieldName(name="description")
+    /**
+     * Описание категории
+     */
+    @FieldName(name = "description")
     private String description;
-    /**Родительская категория*/
-    @FieldName(name="parent_category")
-    private Long parentId;
-    /**Товары категории*/
-    private Set<Product> products;
+    /**
+     * Описание категории латиница
+     */
+    @FieldName(name = "lat_name")
+    private String latName;
+    /**
+     * Приоритет
+     */
+    @FieldName(name = "priority")
+    private Integer priority;
+    /**
+     * Родительская категория
+     */
+    @FieldName(name = "parent_category")
+    private Long parentCategory;
+    /**
+     * Товары категории
+     */
+    private Collection<Product> products;
+    /**
+     * Дочернии категории
+     */
+    private Collection<Category> childCategories;
 
     public Long getId() {
         return id;
@@ -39,19 +61,43 @@ public class Category implements Serializable {
         this.description = description;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public String getLatName() {
+        return latName;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setLatName(String latName) {
+        this.latName = latName;
     }
 
-    public Set<Product> getProducts() {
+    public Integer getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    public Long getParentCategory() {
+        return parentCategory;
+    }
+
+    public void setParentCategory(Long parentCategory) {
+        this.parentCategory = parentCategory;
+    }
+
+    public Collection<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(Collection<Product> products) {
         this.products = products;
+    }
+
+    public Collection<Category> getChildCategories() {
+        return childCategories;
+    }
+
+    public void setChildCategories(Collection<Category> childCategories) {
+        this.childCategories = childCategories;
     }
 }

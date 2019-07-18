@@ -89,10 +89,6 @@ public class DataService {
         return dataAccess.deleteSupplier(id);
     }
 
-    public IDataAccess getDataAccess() {
-        return dataAccess;
-    }
-
     public void setDataAccess(IDataAccess dataAccess) {
         this.dataAccess = dataAccess;
     }

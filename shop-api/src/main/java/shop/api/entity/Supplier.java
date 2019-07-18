@@ -3,29 +3,43 @@ package shop.api.entity;
 import shop.api.entity.annot.FieldName;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Collection;
 
 public class Supplier implements Serializable {
-    /**Идентификатор поставщика*/
-    @FieldName(name="id")
+    /**
+     * Идентификатор поставщика
+     */
+    @FieldName(name = "id")
     private Long id;
-    /**Наименование*/
-    @FieldName(name="name")
+    /**
+     * Наименование
+     */
+    @FieldName(name = "name")
     private String name;
-    /**Описание*/
-    @FieldName(name="description")
+    /**
+     * Описание
+     */
+    @FieldName(name = "description")
     private String description;
-    /**Адрес*/
-    @FieldName(name="address")
+    /**
+     * Адрес
+     */
+    @FieldName(name = "address")
     private String address;
-    /**Телефон*/
-    @FieldName(name="phone")
+    /**
+     * Телефон
+     */
+    @FieldName(name = "phone")
     private String phone;
-    /**e-mail*/
-    @FieldName(name="email")
+    /**
+     * e-mail
+     */
+    @FieldName(name = "email")
     private String email;
-
-    private Set<Product> products;
+    /**
+     * Товары поставщика
+     */
+    private Collection<Product> products;
 
     public Long getId() {
         return id;
@@ -75,11 +89,11 @@ public class Supplier implements Serializable {
         this.email = email;
     }
 
-    public Set<Product> getProducts() {
+    public Collection<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(Collection<Product> products) {
         this.products = products;
     }
 }

@@ -10,6 +10,10 @@
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
 
+    <mvc:cors>
+        <mvc:mapping path="/**" />
+    </mvc:cors>
+
     <bean id="DataController" class="shop.web.controllers.DataController">
         <property name="dataService" ref="DataService" />
     </bean>

@@ -7,24 +7,19 @@
         <property name="location" value="/WEB-INF/shopdata.properties" />
     </bean>
 
-    <!-- JDBC Pool -->
-    <bean id="jdbcStoragePoolProperties" class="org.apache.tomcat.jdbc.pool.PoolProperties" lazy-init="false">
-        <property name="url" value="${db.url}"/>
-        <property name="driverClassName" value="${db.classname}"/>
-        <property name="validationQuery" value="${db.validation}"/>
-        <!--<property name="testOnBorrow" value="true"/>-->
-        <property name="maxIdle" value="30"/>
-        <property name="maxActive" value="30"/>
-        <property name="initialSize" value="1"/>
-        <property name="username" value="${db.user}"/>
-        <property name="password" value="${db.pass}"/>
-        <property name="defaultAutoCommit" value="true"/>
-        <property name="removeAbandoned" value="true"/>
-        <property name="removeAbandonedTimeout" value="60"/>
-    </bean>
-
-    <bean id="JDBCStorageSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close" lazy-init="false">
-        <property name="poolProperties" ref="jdbcStoragePoolProperties" />
+    <!-- JDBC Pool-->
+    <bean id="JDBCStorageSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" lazy-init="false">
+        <property name="jdbcUrl" value="${db.url}"/>
+        <property name="driverClass" value="${db.classname}"/>
+        <property name="user" value="${db.user}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="minPoolSize" value="${db.minpoolsize}"/>
+        <property name="maxPoolSize" value="${db.maxpoolsize}"/>
+        <property name="acquireIncrement" value="${db.acquireincrement}"/>
+        <property name="checkoutTimeout" value="60000"/>
+        <property name="maxConnectionAge" value="60"/>
+        <property name="maxIdleTime" value="60"/>
+        <property name="autoCommitOnClose" value="${db.autocommitonclose}"/>
     </bean>
 
     <bean id="DataAccess" class="shop.data.DataAccessImpl">

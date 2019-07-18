@@ -26,7 +26,7 @@ public class JsonPathArgumentResolver implements HandlerMethodArgumentResolver {
     }
 
     @Override
-    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+    public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         try {
             String body = getRequestBody(webRequest);
             if (null != body && body.length() > 0) {
@@ -53,7 +53,7 @@ public class JsonPathArgumentResolver implements HandlerMethodArgumentResolver {
                 String body = new BufferedReader(new InputStreamReader(req.getInputStream(), StandardCharsets.UTF_8)).lines().collect(Collectors.joining("\n"));
                 req.setAttribute(JSONBODYATTRIBUTE, body);
                 return body;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }

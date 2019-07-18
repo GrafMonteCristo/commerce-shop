@@ -283,10 +283,6 @@ public class DataController {
         }
     }
 
-    public DataService getDataService() {
-        return dataService;
-    }
-
     public void setDataService(DataService dataService) {
         this.dataService = dataService;
     }
